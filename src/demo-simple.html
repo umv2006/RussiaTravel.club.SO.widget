@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демо виджета russiatravel.club</title>
+</head>
+<body>
+    <p>
+    Демо виджета. Ниже должны отображаться данные, полученные от виджета
+</p>
+<p>
+    Дополнительные данные на github<br>
+<a href="https://github.com/umv2006/RussiaTravel.club.SO.widget">https://github.com/umv2006/RussiaTravel.club.SO.widget</a>
+<hr>
+<p>&nbsp;</p>
+
+<div id="rtc-container" class="rtc-container" style="max-width: 1024px; margin:0 auto"></div>
+    <script src="https://russiatravel.club/apika/rtc-widjet.js?V1.01"></script>
+    <script type="text/javascript">
+      (function() {
+          var init = function() {
+              russiaTravelClubApi.init({
+                container: '.rtc-container',
+                v: 'V1',
+                s: 's1',
+                siteCode: '<my-site-code>'
+              });
+          };
+          if (typeof russiaTravelClubApi !== 'undefined') {
+              init();
+          } else {
+              (russiaTravelClubApiInitCallbacks = window.russiaTravelClubApiInitCallbacks || []).push(init);
+          }
+      })();
+    </script>
+</p>
+</body>
+</html>

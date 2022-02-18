@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демо виджета russiatravel.club</title>
+</head>
+<body>
+    <p>
+    Демо виджета. Ниже должны отображаться данные, полученные от виджета
+</p>
+<p>
+    Дополнительные данные на github<br>
+<a href="https://github.com/umv2006/RussiaTravel.club.SO.widget">https://github.com/umv2006/RussiaTravel.club.SO.widget</a>
+<hr>
+<p>&nbsp;</p>
+
+<div id="rtc-container" class="rtc-container" style="max-width: 1024px; margin:0 auto"></div>
+    <script src="https://russiatravel.club/apika/rtc-widjet.js?V1.01"></script>
+    <script type="text/javascript">
+      (function() {
+          var init = function() {
+              russiaTravelClubApi.init({
+                container: '.rtc-container',
+                v: 'V1',
+                s: 's1',
+                siteCode: '<my-site-code>',
+                
+                oneSpotFunction: (item, color) => { 
+    var imgbg = '';
+    if(item["w400"]){
+      var imgUrl = (item["w400"] )? ( "https://russiatravel.club/images/spots/" + item["w400"] ) : "";
+      imgbg = `background-image: url(&quot;` + imgUrl + `&quot;);`;
+    }
+    
+    return `<div class="rtc-list-post rtc-fl-wrap">
+                <div class="rtc-list-post-media">
+                    
+                        <div class="rtc-bg-wrap">
+                            <div class="rtc-bg" data-bg="` + imgUrl + `"
+                                style="` + imgbg + `"></div>
+                        </div>
+                    
+                    <span class="rtc-post-media_title"></span>
+                </div>
+                <div class="rtc-list-post-content">
+                    <a class="rtc-post-category-marker" href="#">` + item['regionString'] + `</a>
+                    <h3>` + item["title"] + `</h3>
+                    <span class="rtc-post-date"><i class="far fa-clock"></i>` + item['dt'] + `</span>
+                    <p>` + item['body'] + `</p>
+                    <ul class="rtc-post-opt">
+                        <li><i class="far fa-comments-alt"></i>  </li>
+                        <li><i class="fal fa-eye"></i>  </li>
+                    </ul>
+                    <div class="rtc-author-link"><img src="https://visit-museums.ru/assets/icons/musinfologo.png"
+                                alt=""> <span>` + item['organisationName'] + `</span></div>
+                </div>
+            </div>`;
+}
+
+
+              });
+          };
+          if (typeof russiaTravelClubApi !== 'undefined') {
+              init();
+          } else {
+              (russiaTravelClubApiInitCallbacks = window.russiaTravelClubApiInitCallbacks || []).push(init);
+          }
+      })();
+    </script>
+</p>
+</body>
+</html>
